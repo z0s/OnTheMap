@@ -7,21 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6A1159F71D3FCBF0003FDDD9 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1159F61D3FCBF0003FDDD9 /* TableViewController.swift */; };
+		6A1159FA1D3FCF01003FDDD9 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1159F91D3FCF01003FDDD9 /* LoginView.swift */; };
+		6A2538061D3DE054005CF9A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A2538051D3DE054005CF9A7 /* Main.storyboard */; };
+		6A2538081D3DEB28005CF9A7 /* UdacityAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2538071D3DEB28005CF9A7 /* UdacityAPI.swift */; };
 		6AF5F2671D34A9890018E351 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5F2661D34A9890018E351 /* AppDelegate.swift */; };
 		6AF5F2691D34A9890018E351 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5F2681D34A9890018E351 /* ViewController.swift */; };
-		6AF5F26C1D34A9890018E351 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5F26A1D34A9890018E351 /* Main.storyboard */; };
 		6AF5F26E1D34A9890018E351 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5F26D1D34A9890018E351 /* Assets.xcassets */; };
 		6AF5F2711D34A9890018E351 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5F26F1D34A9890018E351 /* LaunchScreen.storyboard */; };
+		6AF5F2791D34A9BB0018E351 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5F2781D34A9BB0018E351 /* LoginViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6A1159F61D3FCBF0003FDDD9 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		6A1159F91D3FCF01003FDDD9 /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		6A2538051D3DE054005CF9A7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		6A2538071D3DEB28005CF9A7 /* UdacityAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UdacityAPI.swift; sourceTree = "<group>"; };
 		6AF5F2631D34A9890018E351 /* OnTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AF5F2661D34A9890018E351 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6AF5F2681D34A9890018E351 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		6AF5F26B1D34A9890018E351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6AF5F26D1D34A9890018E351 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6AF5F2701D34A9890018E351 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6AF5F2721D34A9890018E351 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6AF5F2781D34A9BB0018E351 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6A1159F81D3FCEE4003FDDD9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6A2538051D3DE054005CF9A7 /* Main.storyboard */,
+				6A1159F91D3FCF01003FDDD9 /* LoginView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		6AF5F25A1D34A9890018E351 = {
 			isa = PBXGroup;
 			children = (
@@ -56,10 +73,13 @@
 			children = (
 				6AF5F2661D34A9890018E351 /* AppDelegate.swift */,
 				6AF5F2681D34A9890018E351 /* ViewController.swift */,
-				6AF5F26A1D34A9890018E351 /* Main.storyboard */,
+				6AF5F2781D34A9BB0018E351 /* LoginViewController.swift */,
+				6A1159F81D3FCEE4003FDDD9 /* View */,
 				6AF5F26D1D34A9890018E351 /* Assets.xcassets */,
 				6AF5F26F1D34A9890018E351 /* LaunchScreen.storyboard */,
 				6AF5F2721D34A9890018E351 /* Info.plist */,
+				6A2538071D3DEB28005CF9A7 /* UdacityAPI.swift */,
+				6A1159F61D3FCBF0003FDDD9 /* TableViewController.swift */,
 			);
 			path = OnTheMap;
 			sourceTree = "<group>";
@@ -125,7 +145,7 @@
 			files = (
 				6AF5F2711D34A9890018E351 /* LaunchScreen.storyboard in Resources */,
 				6AF5F26E1D34A9890018E351 /* Assets.xcassets in Resources */,
-				6AF5F26C1D34A9890018E351 /* Main.storyboard in Resources */,
+				6A2538061D3DE054005CF9A7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +156,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A1159FA1D3FCF01003FDDD9 /* LoginView.swift in Sources */,
+				6A2538081D3DEB28005CF9A7 /* UdacityAPI.swift in Sources */,
+				6AF5F2791D34A9BB0018E351 /* LoginViewController.swift in Sources */,
 				6AF5F2691D34A9890018E351 /* ViewController.swift in Sources */,
+				6A1159F71D3FCBF0003FDDD9 /* TableViewController.swift in Sources */,
 				6AF5F2671D34A9890018E351 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -144,14 +168,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6AF5F26A1D34A9890018E351 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6AF5F26B1D34A9890018E351 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		6AF5F26F1D34A9890018E351 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -289,6 +305,7 @@
 				6AF5F2771D34A9890018E351 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
