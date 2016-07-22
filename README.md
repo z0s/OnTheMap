@@ -3,7 +3,7 @@
 Project developed for Udacity iOS Developer Nanodegree
 ## Development environment
 <b>IDE:</b> Xcode 7.0
-<br><b>Language:</b> Swift 2.0
+<b>Language:</b> Swift 2.0
 
 ## Questions?
 Send me an [email](mailto:macs4enthusiasts@gmail.com?subject=OnTheMap).
