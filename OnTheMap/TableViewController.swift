@@ -21,26 +21,21 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     let parseRetrievalFailedTitle = "No Location Data"
     
     // MARK: - Overrides
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
     }
-  
-   
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return count of students from models
         let numberOfStuds = StudentInformationModel.studs.count
@@ -57,10 +52,10 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
- //        this object will check for applications that can open the provided URL
+        //        this object will check for applications that can open the provided URL
         let app = UIApplication.sharedApplication()
         
- //        make sure text is present in the cell and can be turned into a NSURL; if so, open it; else, alert and return!
+        //        make sure text is present in the cell and can be turned into a NSURL; if so, open it; else, alert and return!
         guard let providedURL = tableView.cellForRowAtIndexPath(indexPath)?.detailTextLabel?.text,
             let url = NSURL(string: providedURL) where app.openURL(url) == true else {
                 
@@ -69,8 +64,6 @@ class TableViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 presentAlert(badLinkTitle, message: alertViewMessage, actionTitle: alertActionTitle)
                 return
+        }
     }
-    
-
-}
 }
