@@ -314,7 +314,7 @@
                                     <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QDr-w5-etr"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-8V-pUy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-8V-pUy">
                                 <rect key="frame" x="150" y="328" width="300" height="40"/>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.72941176470000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -334,7 +334,7 @@
                                     </mask>
                                 </variation>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ije-Ma-bYk">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ije-Ma-bYk">
                                 <rect key="frame" x="150" y="280" width="300" height="40"/>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.72941176470588232" blue="0.50980392156862742" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -446,10 +446,11 @@
             </objects>
             <point key="canvasLocation" x="22.5" y="315"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign Up View Controller-->
         <scene sceneID="mUq-4l-pp4">
             <objects>
-                <viewController id="b8U-aP-oyt" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="def-ww-VNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController storyboardIdentifier="SignUpViewController" id="b8U-aP-oyt" customClass="SignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="shQ-NH-jgB"/>
                         <viewControllerLayoutGuide type="bottom" id="AM4-nP-ID9"/>
@@ -475,9 +476,8 @@
                         <outlet property="webView" destination="F1P-2R-ioV" id="hul-vm-tvy"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="def-ww-VNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-798" y="1102"/>
+            <point key="canvasLocation" x="-774" y="1107"/>
         </scene>
     </scenes>
     <resources>
