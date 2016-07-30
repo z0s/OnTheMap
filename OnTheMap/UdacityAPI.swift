@@ -29,7 +29,6 @@ struct UdacityAPI {
                 }
                 return
             }
-            
             guard let data = data else {
                 return
             }
@@ -48,7 +47,7 @@ struct UdacityAPI {
         //User.uniqueKey = "3487088640"
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(User.uniqueKey)")!)
         let task = session.dataTaskWithRequest(request) { data, response, error in
-            if error != nil { // Handle error...
+            if error != nil {
                 return
             }
             guard let data = data else {
@@ -64,14 +63,12 @@ struct UdacityAPI {
                     if let userDict = json["user"] as? [String:AnyObject] {
                         User.firstName = userDict["first_name"] as! String
                         User.lastName = userDict["last_name"] as! String
-                    } else {
-                       
                     }
                 }
-            } catch {
-                
+            } catch let error {
+                print(error)
             }
-
+            print(response)
             print(NSString(data: newData, encoding: NSUTF8StringEncoding))
         }
         task.resume()
