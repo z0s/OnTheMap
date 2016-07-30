@@ -47,7 +47,7 @@ struct StudentInformationModel {
         studs.removeAll()
         
         for student1 in newStudents {
-            let newStudent = StudentInformation(student1)
+            let newStudent = StudentInformation(studInfo: student1)
             StudentInformationModel.studs.append(newStudent)
         }
         
