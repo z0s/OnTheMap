@@ -8,6 +8,8 @@
 
 import Foundation
 
+let StudentInfoUpdateFailedNotification = "StudentInfoUpdateFailedNotification"
+
 struct ParseAPI {
     static let url = NSURL(string: "https://api.parse.com/1/classes/StudentLocation")
     static let session = NSURLSession.sharedSession()
@@ -19,6 +21,8 @@ struct ParseAPI {
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
             if error != nil {
+                let note = NSNotification(name: StudentInfoUpdateFailedNotification, object: nil)
+                NSNotificationCenter.defaultCenter().postNotification(note)
                 return
             }
             
