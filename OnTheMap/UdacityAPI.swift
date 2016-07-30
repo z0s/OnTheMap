@@ -44,7 +44,6 @@ struct UdacityAPI {
     }
     
     static func getUserInfo() {
-        //User.uniqueKey = "3487088640"
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(User.uniqueKey)")!)
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil {
