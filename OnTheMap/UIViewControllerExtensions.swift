@@ -1,5 +1,5 @@
 //
-//  AlertViewController.swift
+//  UIViewControllerExtensions.swift
 //  OnTheMap
 //
 //  Created by IT on 7/28/16.
@@ -37,6 +37,27 @@ extension UIViewController {
         
         dispatch_async(dispatch_get_main_queue(), {
             self.presentViewController(alertView, animated: true, completion: nil)
+        })
+    }
+    
+    func showSpinner() -> UIActivityIndicatorView {
+        let spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        dispatch_async(dispatch_get_main_queue(), {
+            spinner.center = self.view.center
+            spinner.color = UIColor.orangeColor()
+            self.view.addSubview(spinner)
+            spinner.startAnimating()
+        })
+
+        return spinner
+    }
+}
+
+extension UIActivityIndicatorView {
+    func hide() {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.stopAnimating()
+            self.removeFromSuperview()
         })
     }
 }
