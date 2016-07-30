@@ -9,6 +9,7 @@
 import Foundation
 
 struct User {
+    //Initialized to empty strings to ease parsing through data.
     static var firstName: String = ""
     static var lastName: String = ""
     static var uniqueKey: String = ""
