@@ -9,6 +9,13 @@
 import UIKit
 
 extension UIViewController {
+    func tapOutKeyboard() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action:#selector(UIViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
     
     func presentAlert(title: String, message: String, actionTitle: String, actionHandler: ((UIAlertAction) -> Void)?) {
         
