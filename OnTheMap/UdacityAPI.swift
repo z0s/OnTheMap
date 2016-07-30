@@ -43,4 +43,37 @@ struct UdacityAPI {
         
         task.resume()
     }
+    
+    static func getUserInfo() {
+        //User.uniqueKey = "3487088640"
+        let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(User.uniqueKey)")!)
+        let task = session.dataTaskWithRequest(request) { data, response, error in
+            if error != nil { // Handle error...
+                return
+            }
+            guard let data = data else {
+                return
+            }
+            let newData = data.subdataWithRange(NSMakeRange(5, data.length - 5)) /* subset response data! */
+            
+            do {
+                if let json = try NSJSONSerialization.JSONObjectWithData(newData, options: [.AllowFragments]) as? [String:AnyObject] {
+                    
+                    print("userInfoJSON = ", json)
+                    
+                    if let userDict = json["user"] as? [String:AnyObject] {
+                        User.firstName = userDict["first_name"] as! String
+                        User.lastName = userDict["last_name"] as! String
+                    } else {
+                       
+                    }
+                }
+            } catch {
+                
+            }
+
+            print(NSString(data: newData, encoding: NSUTF8StringEncoding))
+        }
+        task.resume()
+    }
 }
