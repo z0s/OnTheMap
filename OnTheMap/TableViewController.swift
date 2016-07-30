@@ -8,11 +8,12 @@
 
 import UIKit
 
-class TableViewController: UITableViewController {
+class TableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    @IBOutlet weak var tableView: UITableView!
     // MARK: - Constants
     
-    let reuseIdentifier = "reusableCell"
+    let reuseIdentifier = "locationCell"
     
     let returnActionTitle = "Return"
     let invalidLinkProvidedMessage = "Unable to open provided link!"
@@ -23,11 +24,11 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-    
-
-       
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+  
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -35,19 +36,41 @@ class TableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return count of students from models
-        // let numStudents = studentmodel.students.count
-        return numStudents
+        let numberOfStuds = StudentInformationModel.studs.count
+        return numberOfStuds
     }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier, forIndexPath:  indexPath)
+        let studentInfo = StudentInformationModel.studs[indexPath.row]
+        cell.textLabel?.text = "\(studentInfo.firstName) \(studentInfo.lastName)"
+        cell.detailTextLabel?.text = "\(studentInfo.mediaURL)"
         
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+ //        this object will check for applications that can open the provided URL
+        let app = UIApplication.sharedApplication()
+        
+ //        make sure text is present in the cell and can be turned into a NSURL; if so, open it; else, alert and return!
+        guard let providedURL = tableView.cellForRowAtIndexPath(indexPath)?.detailTextLabel?.text,
+            let url = NSURL(string: providedURL) where app.openURL(url) == true else {
+                
+                let alertViewMessage = invalidLinkProvidedMessage
+                let alertActionTitle = returnActionTitle
+                
+                presentAlert(badLinkTitle, message: alertViewMessage, actionTitle: alertActionTitle)
+                return
+    }
+    
 
-  
-
+}
 }
