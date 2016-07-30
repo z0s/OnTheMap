@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -7,10 +7,10 @@
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Map-->
+        <!--Map View Controller-->
         <scene sceneID="CtJ-cb-IlF">
             <objects>
-                <viewController id="YRn-qc-ADJ" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="YRn-qc-ADJ" userLabel="Map View Controller" customClass="MapViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HFj-z5-ngk"/>
                         <viewControllerLayoutGuide type="bottom" id="awJ-aG-xUm"/>
@@ -41,10 +41,10 @@
             </objects>
             <point key="canvasLocation" x="1549" y="23"/>
         </scene>
-        <!--List-->
+        <!--Table View Controller-->
         <scene sceneID="Pcg-nQ-FjR">
             <objects>
-                <viewController id="0dq-o2-o5j" customClass="ListViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="0dq-o2-o5j" userLabel="Table View Controller" customClass="TableViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="f4H-Zg-ZV0"/>
                         <viewControllerLayoutGuide type="bottom" id="j1X-db-aMQ"/>
@@ -86,10 +86,6 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="0dq-o2-o5j" id="Hbk-gk-4GR"/>
-                                    <outlet property="delegate" destination="0dq-o2-o5j" id="D29-1z-1uX"/>
-                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -100,9 +96,9 @@
                             <constraint firstItem="j1X-db-aMQ" firstAttribute="top" secondItem="z9B-Z9-sUX" secondAttribute="bottom" id="s9z-ak-hnB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="List" image="list" id="KAI-BO-J6M"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="list" id="KAI-BO-J6M"/>
                     <connections>
-                        <outlet property="tableView" destination="z9B-Z9-sUX" id="HIG-Uj-zVh"/>
+                        <outlet property="tableView" destination="z9B-Z9-sUX" id="CDR-fT-OIm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vgf-bL-bsr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -112,7 +108,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="2Dt-mG-88p">
             <objects>
-                <tabBarController id="cT6-zZ-apm" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" id="cT6-zZ-apm" customClass="TabBarController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="TaX-k7-IUB"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="ugG-Vf-NuQ">
@@ -123,16 +119,17 @@
                     <connections>
                         <segue destination="YRn-qc-ADJ" kind="relationship" relationship="viewControllers" id="Hn3-PX-v92"/>
                         <segue destination="0dq-o2-o5j" kind="relationship" relationship="viewControllers" id="sey-cF-zU8"/>
+                        <segue destination="GKr-9c-z5J" kind="presentation" identifier="tabBarPinToInfoPostingViewSegue" id="YCz-C2-gCL"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lue-bz-dcd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="747" y="347"/>
         </scene>
-        <!--Info Posting View Controller-->
+        <!--Information Posting View Controller-->
         <scene sceneID="MpW-7y-TVS">
             <objects>
-                <viewController id="GKr-9c-z5J" customClass="InfoPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="GKr-9c-z5J" userLabel="Information Posting View Controller" customClass="InformationPostingViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mFB-Rb-Fh0"/>
                         <viewControllerLayoutGuide type="bottom" id="ViN-9j-OhC"/>
@@ -178,7 +175,7 @@
                                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="cancelInfoPosting:" destination="GKr-9c-z5J" eventType="touchUpInside" id="hUU-DW-0vb"/>
+                                            <action selector="cancelButtonPressed:" destination="GKr-9c-z5J" eventType="touchUpInside" id="tUx-8P-eP5"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -220,7 +217,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Find on the Map"/>
                                         <connections>
-                                            <action selector="findOnTheMap:" destination="GKr-9c-z5J" eventType="touchUpInside" id="oas-a7-3aL"/>
+                                            <action selector="findOnTheMapButtonPressed:" destination="GKr-9c-z5J" eventType="touchUpInside" id="R4j-pt-xHY"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -235,12 +232,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <state key="normal" title="Submit"/>
                                 <connections>
-                                    <action selector="submit:" destination="GKr-9c-z5J" eventType="touchUpInside" id="s4a-f1-vxr"/>
+                                    <action selector="submitLinkButtonPressed:" destination="GKr-9c-z5J" eventType="touchUpInside" id="Ur6-zn-Ap3"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="GG4-tP-8T0">
-                                <rect key="frame" x="282" y="281" width="37" height="37"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="0.69999999999999996" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -262,21 +256,17 @@
                             <constraint firstItem="erZ-wJ-Itk" firstAttribute="trailing" secondItem="9wt-2K-3Ov" secondAttribute="trailing" id="ppr-Dp-dsK"/>
                             <constraint firstItem="gNW-Gq-tWD" firstAttribute="bottom" secondItem="s0k-ZZ-hrE" secondAttribute="bottom" multiplier="96.5%" id="szf-a8-f3W"/>
                             <constraint firstItem="fBk-w3-x0d" firstAttribute="height" secondItem="9wt-2K-3Ov" secondAttribute="height" multiplier="1/4" id="t5z-V3-AOO"/>
-                            <constraint firstItem="GG4-tP-8T0" firstAttribute="centerY" secondItem="9wt-2K-3Ov" secondAttribute="centerY" id="tGc-i6-cQM"/>
-                            <constraint firstItem="GG4-tP-8T0" firstAttribute="centerX" secondItem="9wt-2K-3Ov" secondAttribute="centerX" id="vcq-qF-Z27"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="activityIndicator" destination="GG4-tP-8T0" id="0sd-vK-WBL"/>
-                        <outlet property="bottomView" destination="ZbM-68-InU" id="sIr-HF-fS5"/>
+                        <outlet property="buttonBackgroundView" destination="ZbM-68-InU" id="nA7-zr-cV7"/>
                         <outlet property="cancelButton" destination="Oqr-0i-tbt" id="6g7-WN-His"/>
                         <outlet property="findOnTheMapButton" destination="rl3-Ym-ugd" id="Uge-TN-uDf"/>
-                        <outlet property="linkTextView" destination="VpQ-mV-Hen" id="eVE-9i-hGH"/>
-                        <outlet property="locationTextView" destination="erZ-wJ-Itk" id="WfN-bZ-gaL"/>
+                        <outlet property="linkTextView" destination="VpQ-mV-Hen" id="1Lg-1O-xA3"/>
+                        <outlet property="locationTextView" destination="erZ-wJ-Itk" id="PcM-7t-ep0"/>
                         <outlet property="mapView" destination="s0k-ZZ-hrE" id="s63-II-ZXP"/>
-                        <outlet property="submitButton" destination="gNW-Gq-tWD" id="b6t-Gg-MEA"/>
-                        <outlet property="topLabel" destination="VZU-iI-89X" id="0FQ-0L-HJP"/>
-                        <outlet property="topView" destination="fBk-w3-x0d" id="Gkf-Xo-Rsy"/>
+                        <outlet property="submitLinkButton" destination="gNW-Gq-tWD" id="tsC-je-i2J"/>
+                        <outlet property="titleLabel" destination="VZU-iI-89X" id="jk3-9u-re3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hSg-Iy-AZk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -295,18 +285,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="udacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="TQ9-fq-SqS">
-                                <rect key="frame" x="268" y="168" width="64" height="64"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="ZAr-nF-f96"/>
-                                    <constraint firstAttribute="width" constant="64" id="j4X-QF-rZz"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="ZAr-nF-f96"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login to Udacity" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cnc-LU-DDL">
                                 <rect key="frame" x="120" y="232" width="360" height="40"/>
                                 <constraints>
@@ -332,8 +310,11 @@
                                 <state key="normal" title="Don't have an account? Sign Up">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="signUp:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QDr-w5-etr"/>
+                                </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="    Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-8V-pUy">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="   Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rZn-8V-pUy">
                                 <rect key="frame" x="150" y="328" width="300" height="40"/>
                                 <color key="backgroundColor" red="0.99607843139999996" green="0.72941176470000002" blue="0.50980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -399,16 +380,28 @@
                                     <action selector="signInButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="blp-bD-rLr"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="udacityLogo" translatesAutoresizingMaskIntoConstraints="NO" id="TQ9-fq-SqS">
+                                <rect key="frame" x="272" y="167" width="57" height="57"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="INa-Di-fwW"/>
+                                    <constraint firstAttribute="height" constant="64" id="ZAr-nF-f96"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ZAr-nF-f96"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.49803921568627452" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="TQ9-fq-SqS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4pU-yK-aOu"/>
-                            <constraint firstItem="TQ9-fq-SqS" firstAttribute="centerX" secondItem="cnc-LU-DDL" secondAttribute="centerX" id="6gH-jA-Eun"/>
+                            <constraint firstItem="TQ9-fq-SqS" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="147" id="1iH-h5-3Yd"/>
                             <constraint firstItem="FH7-UF-YfC" firstAttribute="trailing" secondItem="v4i-C5-erm" secondAttribute="trailing" id="BPr-mw-oQI"/>
+                            <constraint firstItem="TQ9-fq-SqS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BiZ-rl-6E0"/>
                             <constraint firstItem="ije-Ma-bYk" firstAttribute="top" secondItem="cnc-LU-DDL" secondAttribute="bottom" constant="8" symbolic="YES" id="DCE-RF-lgR"/>
-                            <constraint firstItem="cnc-LU-DDL" firstAttribute="top" secondItem="TQ9-fq-SqS" secondAttribute="bottom" constant="20" id="EZn-7E-ghq"/>
                             <constraint firstItem="cnc-LU-DDL" firstAttribute="centerX" secondItem="ije-Ma-bYk" secondAttribute="centerX" id="Eee-yR-QRE"/>
                             <constraint firstItem="FH7-UF-YfC" firstAttribute="top" secondItem="rZn-8V-pUy" secondAttribute="bottom" constant="13" id="Fbh-Y7-24H"/>
+                            <constraint firstItem="cnc-LU-DDL" firstAttribute="top" secondItem="TQ9-fq-SqS" secondAttribute="bottom" constant="8" symbolic="YES" id="FhC-xL-aBZ"/>
                             <constraint firstItem="TQ9-fq-SqS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="128" id="Jeq-Ky-1q6"/>
                             <constraint firstItem="rZn-8V-pUy" firstAttribute="top" secondItem="ije-Ma-bYk" secondAttribute="bottom" constant="8" symbolic="YES" id="WA7-8E-Nxg"/>
                             <constraint firstItem="FH7-UF-YfC" firstAttribute="leading" secondItem="v4i-C5-erm" secondAttribute="leading" id="WDb-KY-Njl"/>
@@ -419,6 +412,7 @@
                             <constraint firstItem="v4i-C5-erm" firstAttribute="top" secondItem="FH7-UF-YfC" secondAttribute="bottom" constant="8" symbolic="YES" id="mvd-o3-8nS"/>
                             <constraint firstItem="rZn-8V-pUy" firstAttribute="leading" secondItem="FH7-UF-YfC" secondAttribute="leading" id="pwY-bG-5Dd"/>
                             <constraint firstItem="ije-Ma-bYk" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="r6o-Jd-ufa"/>
+                            <constraint firstItem="TQ9-fq-SqS" firstAttribute="centerX" secondItem="cnc-LU-DDL" secondAttribute="centerX" id="xrj-EJ-TuS"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -430,7 +424,6 @@
                     <connections>
                         <outlet property="passwordField" destination="rZn-8V-pUy" id="RZV-pS-bqL"/>
                         <outlet property="usernameField" destination="ije-Ma-bYk" id="g6e-PY-Czn"/>
-                        <outlet property="view" destination="FH7-UF-YfC" id="Wgc-FQ-XkO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -440,7 +433,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Hd7-lX-64S">
             <objects>
-                <navigationController storyboardIdentifier="ManagerNavigationController" id="Lea-5p-yna" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="TabBarNavController" id="Lea-5p-yna" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="w2T-Xd-zfz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -453,10 +446,10 @@
             </objects>
             <point key="canvasLocation" x="22.5" y="315"/>
         </scene>
-        <!--Udacity Signup View Controller-->
+        <!--View Controller-->
         <scene sceneID="mUq-4l-pp4">
             <objects>
-                <viewController storyboardIdentifier="UdacitySignupViewController" id="b8U-aP-oyt" customClass="UdacitySignupViewController" customModule="OnTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="b8U-aP-oyt" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="shQ-NH-jgB"/>
                         <viewControllerLayoutGuide type="bottom" id="AM4-nP-ID9"/>
