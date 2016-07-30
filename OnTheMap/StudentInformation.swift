@@ -22,7 +22,7 @@ struct StudentInformation {
     var uniqueKey: String
     var updatedAt: String
     
-    init(_ studInfo: [String: AnyObject]) {
+    init(studInfo: [String: AnyObject]) {
         createdAt = studInfo[StudentInformationModel.createdAtKey] != nil ? studInfo[StudentInformationModel.createdAtKey] as! String : ""
         firstName = studInfo[StudentInformationModel.firstNameKey] as! String
         lastName  = studInfo[StudentInformationModel.lastNameKey]  as! String
