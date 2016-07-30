@@ -37,6 +37,8 @@ class TabBarController: UITabBarController {
         // note: right bar buttons in array appear on nav bar right to left
         navigationItem.rightBarButtonItems = [refreshButton, pinButton]
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(updateDataFailed), name: StudentInfoUpdateFailedNotification, object: nil)
+        
         // do initial data call
         retrieveUserData()
         UdacityAPI.getUserInfo()
@@ -47,14 +49,18 @@ class TabBarController: UITabBarController {
         super.viewWillAppear(animated)
         
         // refresh data when the view appears again
-        retrieveUserData()
+        retrieveUserData() 
     }
     
     // MARK: - Selectors
+    let badLinkMessage = "Uh oh! Seems like you don't have an internet connection."
+    func updateDataFailed() {
+        self.presentAlert("Update Failed", message: badLinkMessage, actionTitle: "OK")
+    }
     
     /// Segues back (unwinds) to logout function
     func doLogout() {
-        self.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     
