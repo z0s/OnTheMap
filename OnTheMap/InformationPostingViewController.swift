@@ -26,12 +26,11 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
     var coords : CLPlacemark?
     
     override func viewDidLoad() {
-        
         linkTextView.delegate = self
         self.locationTextView.delegate = self
         self.linkTextView.alpha = 0
         self.submitLinkButton.hidden = true
-        //self.locationTextView.becomeFirstResponder()
+        tapOutKeyboard()
     }
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
 
@@ -59,8 +58,9 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
     private func showMap() {
         //1. Hide TextField
         UIView.animateWithDuration(0.5) {
-            self.locationTextView.alpha = 0;
-            self.findOnTheMapButton.alpha = 0;
+            self.titleLabel.hidden = true
+            self.locationTextView.alpha = 0.0
+            self.findOnTheMapButton.alpha = 0
             self.submitLinkButton.hidden = false
             self.findOnTheMapButton.enabled = false
             self.linkTextView.alpha = 1
@@ -80,6 +80,7 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
     
     //4. Submit Button
     @IBAction func submitLinkButtonPressed(sender: AnyObject) {
+        
         User.latitude = (self.coords!.location?.coordinate.latitude)!
         User.longitude = (self.coords!.location?.coordinate.longitude)!
         User.mediaURL = self.linkTextView.text!
@@ -104,9 +105,12 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
     
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func textViewDidEndEditing(textView: UITextView) {
+        dismissKeyboard()
+    }
     func textViewDidBeginEditing(textView: UITextView) {
         textView.text = nil
     }
