@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     let invalidLinkMessage = "Uh oh! Seems like you don't have an internet connection."
@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         gradientLayer()
-
+        tapOutKeyboard()
         // Do any additional setup after loading the view.
         
         let spacerView = UIView(frame:CGRect(x:0, y:0, width:20, height:10))
@@ -30,13 +30,11 @@ class LoginViewController: UIViewController {
         let anotherSpacerView = UIView(frame:CGRect(x:0, y:0, width:20, height:10))
         passwordField.leftViewMode = UITextFieldViewMode.Always
         passwordField.leftView = anotherSpacerView
+        
+        usernameField.delegate = self
+        passwordField.delegate = self
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -49,11 +47,13 @@ class LoginViewController: UIViewController {
         self.view.layer.insertSublayer(gradient, atIndex: 0)
     }
     
-
+    
     // MARK: - Handlers
     
     
     @IBAction func signInButtonPressed(sender: UIButton) {
+        dismissKeyboard()
+        
         guard let username = usernameField.text, password = passwordField.text else {
             return
         }
@@ -69,7 +69,7 @@ class LoginViewController: UIViewController {
                     let okActionAlertTitle = "OK"
                     
                     self.presentAlert("Not Online", message: alertViewMessage, actionTitle: okActionAlertTitle, actionHandler: nil)
-
+                    
                 }
             } else {
                 do {
@@ -94,11 +94,11 @@ class LoginViewController: UIViewController {
             }
         }
     }
-
+    
     @IBAction func signUp(sender: AnyObject) {
+        _ = self.storyboard?.instantiateViewControllerWithIdentifier("SignUpViewController")
         UIApplication.sharedApplication().openURL(NSURL(string: url.URL)!)
     }
-    
     struct url {
         static let URL = "https://www.udacity.com/account/auth#!/signup"
     }
@@ -106,5 +106,11 @@ class LoginViewController: UIViewController {
     struct orange {
         static let aOrange = UIColor(red:0.99, green:0.44, blue:0.13, alpha:1.00)
         static let bOrange = UIColor(red:0.99, green:0.60, blue:0.16, alpha:1.00)
+    }
+    
+    // MARK: - TextField Delegate methods
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        dismissKeyboard()
+        return false
     }
 }
