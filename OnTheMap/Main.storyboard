@@ -449,7 +449,6 @@
         <!--Sign Up View Controller-->
         <scene sceneID="mUq-4l-pp4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="def-ww-VNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="SignUpViewController" id="b8U-aP-oyt" customClass="SignUpViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="shQ-NH-jgB"/>
@@ -476,6 +475,7 @@
                         <outlet property="webView" destination="F1P-2R-ioV" id="hul-vm-tvy"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="def-ww-VNX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-774" y="1107"/>
         </scene>
