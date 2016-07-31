@@ -33,6 +33,13 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // point annotations will be stored in this array, and then provided to the map view.
         var annotations = [MKPointAnnotation]()
         
+        dispatch_async(dispatch_get_main_queue()) {
+            // remove all existing annotations
+            for annotation in self.mapView.annotations {
+                self.mapView.removeAnnotation(annotation)
+            }
+        }
+        
         // The "locations" array is loaded with the sample data below. We are using the dictionaries
         // to create map annotations. This would be more stylish if the dictionaries were being
         // used to create custom structs. Perhaps StudentLocation structs.
@@ -101,9 +108,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                     return
             }
             
-            }
-            
         }
+        
     }
-    
-
+}
