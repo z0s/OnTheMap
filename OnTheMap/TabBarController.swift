@@ -60,6 +60,7 @@ class TabBarController: UITabBarController {
     
     /// Segues back (unwinds) to logout function
     func doLogout() {
+        UdacityAPI.logOut()
         dismissViewControllerAnimated(true, completion: nil)
     }
     
