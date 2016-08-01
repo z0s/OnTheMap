@@ -33,7 +33,7 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
         tapOutKeyboard()
     }
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
-
+        
         let locationtext = locationTextView.text
         User.mapString = locationtext!
         self.activityIndicator = showSpinner()
@@ -69,7 +69,7 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
         }
         
         let place = MKPlacemark(placemark: self.coords!)
-
+        
         
         self.mapView.addAnnotation(place)
         
@@ -97,7 +97,7 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
                     self.presentAlert("Error", message: "Posting user location failed", actionTitle: "Return")
                 }
             }
-
+            
         }
     }
     
