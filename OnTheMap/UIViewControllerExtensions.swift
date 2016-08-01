@@ -14,11 +14,11 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     func dismissKeyboard() {
-        view.endEditing(true) 
+        view.endEditing(true)
     }
     
     func presentAlert(error: NSError) {
-      presentAlert("Error", message: error.localizedDescription, actionTitle: "OK", actionHandler: nil)
+        presentAlert("Error", message: error.localizedDescription, actionTitle: "OK", actionHandler: nil)
     }
     
     func presentAlert(title: String, message: String, actionTitle: String, actionHandler: ((UIAlertAction) -> Void)?) {
@@ -59,7 +59,7 @@ extension UIViewController {
             self.view.addSubview(spinner)
             spinner.startAnimating()
         })
-
+        
         return spinner
     }
 }
