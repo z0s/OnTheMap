@@ -41,7 +41,7 @@ struct ParseAPI {
             do {
                 if let json = try NSJSONSerialization.JSONObjectWithData(data, options: [.AllowFragments]) as? [String:AnyObject] {
                     if let studentInfoArray = json["results"] as? [[String:AnyObject]] {
-                      StudentInformationModel.populateStudentList(withStudents: studentInfoArray)
+                        StudentInformationModel.populateStudentList(withStudents: studentInfoArray)
                     } else {
                     }
                 }
