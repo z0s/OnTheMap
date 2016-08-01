@@ -10,12 +10,13 @@ import Foundation
 
 typealias RequestCompletionHandler = (data: NSData?, response: NSURLResponse?, error: NSError?) -> Void
 
+
 struct UdacityAPI {
     
     static let url = NSURL(string: "https://www.udacity.com/api/session")
     static let session = NSURLSession.sharedSession()
     
-    static func signInWithUsername(username: String, password: String, completion: RequestCompletionHandler?) -> Void {
+    static func signInWithUsername(username: String, password: String, completion: RequestCompletionHandler?) {
         let request = NSMutableURLRequest(URL: url!)
         request.HTTPMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Accept")
@@ -43,10 +44,13 @@ struct UdacityAPI {
         task.resume()
     }
     
-    static func getUserInfo() {
+    static func getUserInfo(completion: RequestCompletionHandler?){
         let request = NSMutableURLRequest(URL: NSURL(string: "https://www.udacity.com/api/users/\(User.uniqueKey)")!)
         let task = session.dataTaskWithRequest(request) { data, response, error in
             if error != nil {
+                if let completion = completion {
+                    completion(data: nil, response: nil, error: error)
+                }
                 return
             }
             guard let data = data else {
@@ -95,3 +99,4 @@ struct UdacityAPI {
         task.resume()
     }
 }
+
