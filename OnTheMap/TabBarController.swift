@@ -41,7 +41,14 @@ class TabBarController: UITabBarController {
         
         // do initial data call
         retrieveUserData()
-        UdacityAPI.getUserInfo()
+        UdacityAPI.getUserInfo { (data, response, error) in
+            
+            if let error = error {
+                self.presentAlert(error)
+            }
+            
+            
+        }
     }
     
     
@@ -49,7 +56,7 @@ class TabBarController: UITabBarController {
         super.viewWillAppear(animated)
         
         // refresh data when the view appears again
-        retrieveUserData() 
+        retrieveUserData()
     }
     
     // MARK: - Selectors
