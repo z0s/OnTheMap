@@ -17,9 +17,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     let invalidLinkMessage = "Sorry the link provided is invalid."
     let reuseId = "reusableAnnotationPin"
     let returnTitle = "Return"
-   
+    
     @IBOutlet weak var mapView: MKMapView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         mapView.delegate = self
@@ -72,7 +72,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             self.mapView.addAnnotations(annotations)
         }
     }
-
+    
     // MARK: - MKMapViewDelegate
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
