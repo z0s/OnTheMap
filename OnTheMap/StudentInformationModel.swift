@@ -42,7 +42,7 @@ struct StudentInformationModel {
     
     static var studs = [StudentInformation]()
     
-
+    
     static func populateStudentList(withStudents newStudents: [[String: AnyObject]]) {
         studs.removeAll()
         
