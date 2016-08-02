@@ -90,6 +90,13 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
         activityIndicator = showSpinner()
         ParseAPI.postUserLocation { (data, response, error) in
             self.activityIndicator?.hide()
+            if let response = response as? NSHTTPURLResponse {
+                if response.statusCode < 200 || response.statusCode > 300 {
+                    self.presentAlert("Try Again Later", message: "There was an error. Please try again later!", actionTitle: "Return")
+                    return
+                }
+            }
+            
             if error != nil {
                 self.presentAlert("Error", message: "Posting user location failed", actionTitle: "Return")
             } else {
@@ -99,7 +106,6 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
                     self.presentAlert("Error", message: "Posting user location failed", actionTitle: "Return")
                 }
             }
-            
         }
     }
     
