@@ -58,8 +58,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             spinner.hide()
             
             if let response = response as? NSHTTPURLResponse {
-                if response.statusCode > 200 && response.statusCode < 300 {
+                if response.statusCode < 200 || response.statusCode > 300 {
                     self.presentAlert("Try Again Later", message: "There was an error. Please try again later!", actionTitle: "Return")
+                    return
                 }
             }
             if let error = error {
