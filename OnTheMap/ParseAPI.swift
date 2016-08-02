@@ -28,6 +28,13 @@ struct ParseAPI {
         request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
         
         let task = session.dataTaskWithRequest(request) { (data, response, error) in
+            if let response = response as? NSHTTPURLResponse {
+                if response.statusCode < 200 || response.statusCode > 300 {
+                    let note = NSNotification(name: StudentInfoUpdateFailedNotification, object: nil)
+                    NSNotificationCenter.defaultCenter().postNotification(note)
+                    return
+                }
+            }
             if error != nil {
                 let note = NSNotification(name: StudentInfoUpdateFailedNotification, object: nil)
                 NSNotificationCenter.defaultCenter().postNotification(note)
