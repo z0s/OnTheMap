@@ -31,6 +31,8 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
         self.linkTextView.alpha = 0
         self.submitLinkButton.hidden = true
         tapOutKeyboard()
+        linkTextView.returnKeyType = .Done
+        locationTextView.returnKeyType = .Done
     }
     @IBAction func findOnTheMapButtonPressed(sender: AnyObject) {
         
@@ -108,9 +110,18 @@ class InformationPostingViewController : UIViewController, UITextViewDelegate {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            dismissKeyboard()
+            return false
+        }
+        return true
+    }
+    
     func textViewDidEndEditing(textView: UITextView) {
         dismissKeyboard()
     }
+    
     func textViewDidBeginEditing(textView: UITextView) {
         textView.text = nil
     }
