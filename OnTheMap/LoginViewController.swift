@@ -34,11 +34,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         usernameField.delegate = self
         passwordField.delegate = self
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     private func gradientLayer() {
         let gradient = CAGradientLayer()
         gradient.frame = self.view.bounds
@@ -61,6 +56,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let spinner = showSpinner()
         UdacityAPI.signInWithUsername(username, password: password) { (data, response, error) in
             spinner.hide()
+            
+            if let response = response as? NSHTTPURLResponse {
+                if response.statusCode > 200 && response.statusCode < 300 {
+                    self.presentAlert("Try Again Later", message: "There was an error. Please try again later!", actionTitle: "Return")
+                }
+            }
             if let error = error {
                 // Network Error
                 if error.code == NSURLErrorNotConnectedToInternet {
